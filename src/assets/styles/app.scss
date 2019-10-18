@@ -1,0 +1,335 @@
+body,
+body * {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $c-navy;
+  color: #fff;
+  font: 13px / 1.5 arial;
+}
+
+
+.header {
+  position: sticky;
+  background: $c-navy;
+  top: 0;
+  z-index: 5;
+}
+
+.header__bar {
+  background: lighten($c-navy, 10%);
+  width: 100%;
+  height: 4px;
+  position: relative;
+  margin: 0 0 40px;
+
+}
+
+.header__bar-progress {
+  top: 0;
+  position: absolute;
+  height: 4px;
+  overflow: hidden;
+  transition: width 0.5s ease;
+  &--dem {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius:5px;
+    background-color: $c-blue;
+    left: 0;
+  }
+  &--rep {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: $c-red;
+    right: 0;
+  }
+}
+
+.header__title {
+  padding: 30px 0 15px;
+  font: italic normal 15px / 1 georgia;
+  text-align: center;
+  width: 250px;
+  margin: 0 auto;
+  border-bottom: solid 1px $c-white-08;
+}
+
+.header__score {
+  display: flex;
+  justify-content: center;
+}
+
+
+.header__count {
+  font-size: 80px;
+  margin: 0;
+  line-height: 1;
+  padding: 50px 30px 15px;
+  position: relative;
+
+  &--winner {
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 20px;
+      margin-left: -10px;
+      width: 18px;
+      height: 8px;
+      border-style: solid;
+      border-width: 0 0 3px 3px;
+      transform: rotate(-45deg);
+    }
+    &.header__count--dem::before {
+      border-color: $c-blue;
+    }
+    &.header__count--rep::before {
+      border-color: $c-red;
+    }
+  }
+
+  &--dem {
+    color: $c-blue;
+  }
+    &--rep {
+    color: $c-red;
+  }
+}
+
+.header__buttons {
+  display: flex;
+  padding: 0 0 30px;
+  justify-content: center
+}
+
+.button {
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid $c-white-08;
+  padding: 12px 20px;
+  display: inline-block;
+  color: $c-white;
+  font: 11px / 1 arial;
+  appearance: none;
+}
+
+.header,
+.columns-wrap {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+
+.column {
+  list-style: None;
+  margin: 0;
+  padding: 0 0 50px;;
+  width: 100%;
+  position: relative;
+
+  &--safe {
+    opacity: 0.5;
+    padding-bottom: 100px;
+  }
+
+  &:after {
+    // background: linear-gradient(  rgba($c-navy, 0%), rgba($c-navy, 100%));
+    height: 150px;
+    width: 100%;
+    content: '';
+    display: block;
+    position: absolute;
+    pointer-events: none;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.column__header {
+  font-size: 24px;
+
+  font-weight: bold;
+  span {
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    opacity: 0.5;
+  }
+}
+
+
+.state {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 9px 0;
+  border-top: 1px solid $c-white-08;
+
+  &:last-of-type {
+    border-bottom: 1px solid $c-white-08;
+  }
+}
+
+$pill-width: 40px;
+$pill-height: 13px;
+
+.state__label {
+  width: 80%;
+}
+
+
+.state__articles {
+    border-top: 1px solid $c-white-08;
+  border-left: 1px solid $c-white-08;
+  position: absolute;
+  display: block;
+  width: 250px;
+  padding: 15px 0 5px 0;
+  list-style: none;
+  opacity: 0;
+  top: 0%;
+  left: -275px;
+  transition: all 0.3s;
+  z-index: 5;
+  padding: 20px;
+
+
+  .state:hover & {
+    opacity: 1;
+  }
+}
+
+
+.state__articles-header {
+  color: $c-white;
+  font:  normal 18px / 1.2 georgia;
+  padding: 0 0 20px;
+  margin: 0;
+}
+
+.state__article {
+  max-width: 100%;
+  margin: 0 0 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.state__link {
+  font: normal 15px / 1.5 arial;
+  text-decoration: none;
+  color: $c-white;
+  border-bottom: 1px solid $c-white-08;
+  padding-bottom: 2px;
+
+  &::before {
+    content: '↗';
+    font-size: 70%;
+    color: $c-blue;
+    position: absolute;
+    left: 0;
+    top: 4px;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.state__toggle {
+  width: $pill-width;
+  position: relative;
+}
+
+
+.state__toggle-checkbox,
+.state__toggle-pill {
+  width: $pill-width;
+  height: $pill-height;
+}
+
+.state__toggle-checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.state__toggle-pill {
+  width: $pill-width;
+  height: $pill-height;
+  background: #eee;
+  border-radius: $pill-height / 2;
+  position: relative;
+  z-index: 1;
+  transition: background-color 0.3s ease;
+  pointer-events: none;
+  &::before {
+    position: absolute;
+    background: #fff;
+    content: "";
+    display: block;
+    height: $pill-height - 4px;
+    width: $pill-height - 4px;
+    top: 2px;
+    left: 0;
+    border-radius: 50%;
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
+}
+
+
+
+// Republican
+.state__toggle-checkbox ~ .state__toggle-pill {
+  background-color: $c-red;
+  &::before {
+    transform: translateX(#{$pill-width - $pill-height});
+  }
+}
+
+// Democratic
+.state__toggle-checkbox:checked ~ .state__toggle-pill {
+  background-color: $c-blue;
+   &::before {
+    transform: translateX(2px);
+  }
+}
+
+// Disabled
+.state__toggle-checkbox:disabled ~ .state__toggle-pill {
+  background-color: $c-gray;
+  opacity: 0.3;
+}
+
+.state__label {
+  font-weight: bold;
+  font-size: 11px;
+  color: $c-white;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.state__label-votes {
+  opacity: 0.5;
+  letter-spacing: 0.2px;
+  text-transform: none;
+  display: inline-block;
+  margin-left: 5px;
+  font: italic normal 13px / 1  'Georgia', serif;
+}
+
+.state__marker {
+  width: $pill-height;
+  height: $pill-height;
+  border-radius: 50%;
+  &--dem {
+    background: $c-blue;
+  }
+  &--rep {
+    background: $c-red;
+  }
+}
