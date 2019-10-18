@@ -23,15 +23,25 @@ body {
   height: 4px;
   position: relative;
   margin: 0 0 40px;
-
+  &:after {
+    position: absolute;
+    content: '';
+    left: 50%;
+    top: -15px;
+    height: 30px;
+    border-left: solid 1px $c-white-30;
+  }
 }
 
 .header__bar-progress {
   top: 0;
   position: absolute;
   height: 4px;
+  display: block;
   overflow: hidden;
+  top: 0;
   transition: width 0.5s ease;
+
   &--dem {
     border-top-left-radius: 5px;
     border-bottom-left-radius:5px;
@@ -44,6 +54,8 @@ body {
     background-color: $c-red;
     right: 0;
   }
+
+
 }
 
 .header__title {
@@ -180,6 +192,11 @@ $pill-height: 13px;
 
 .state__label {
   width: 80%;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 0.6;
+  }
 }
 
 
