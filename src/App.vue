@@ -5,7 +5,6 @@
         Electoral Vote Builder
       </h3>
 
-
       <div class="header__score">
         <h2 :class="{'header__count--winner': repElectoralVotes < demElectoralVotes}" class="header__count header__count--dem">
           {{ demElectoralVotes }}
@@ -20,15 +19,20 @@
         <span :style="`width: ${repBarWidth}`" class="header__bar-progress header__bar-progress--rep" />
       </div>
 
-      <section class="header__buttons">
-        <a href="#" class="button">
-          Share this outcome ↗
-        </a>
-        <!--
-        <button @click="reset" class="button">
-          Reset to 2016
+      <div class="header__share-bar">
+        <button class="button button--share button--pill">
+          Share this outcome
         </button>
-        -->
+      </div>
+
+
+      <section class="header__buttons">
+        <button
+          @click="reset"
+          class="button button--setting"
+        >
+          Reset to 2016 outcome
+        </button>
       </section>
     </header>
 
@@ -126,27 +130,33 @@
 
 import { states } from './data.js';
 
-const startingStates = states.map(state => {
-  const demWon2016 = state.votes2016Dem > state.votes2016Rep;
+
+function initData() {
+
+  const statesArray =
+     states.map(state => {
+       const demWon2016 = state.votes2016Dem > state.votes2016Rep;
+       return {
+         ...state,
+         enabled: true,
+         demWinner: demWon2016,
+       };
+     });
+
   return {
-    ...state,
-    enabled: true,
-    demWinner: demWon2016,
+    theStates: statesArray,
   };
-});
+}
 
 
 export default {
   name: 'App',
 
   data: function() {
-    return {
-      theStates: startingStates,
-    };
+    return initData();
   },
 
   computed: {
-
 
     statesBattleGround() {
       return this.theStates.filter(state => state.battleground).sort((a, b) => b.voteCount - a.voteCount);
@@ -191,10 +201,11 @@ export default {
       return `${this.demElectoralVotes / 5.38}%`;
     },
   },
+
   methods: {
     reset() {
       // console.warn('resetting');
-      // Object.assign(this.$data, getInitialData());
+      Object.assign(this.$data, initData());
     },
 
     toggleDisabled(clickedID) {
