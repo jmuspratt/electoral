@@ -63,7 +63,7 @@ const states = [
     name: 'Connecticut',
     votes2016Rep: 0,
     votes2016Dem: 7,
-    voteCount: 9,
+    voteCount: 7,
     battleground: false,
     inplay: false,
   },
