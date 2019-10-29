@@ -99,7 +99,7 @@ const states = [
     battleground: true,
     inplay: false,
     articles: [
-      'Wisconsin article title',
+      'Georgia article title',
       'Some other article title',
     ],
   },
