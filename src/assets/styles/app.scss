@@ -213,8 +213,8 @@ body {
   }
 }
 
-$pill-width: 40px;
-$pill-height: 13px;
+$pill-width: 50px;
+$pill-height: 17px;
 
 .state__label {
   width: 80%;
@@ -309,6 +309,8 @@ $pill-height: 13px;
   z-index: 1;
   transition: background-color 0.3s ease;
   pointer-events: none;
+  transition: transform 0.3s ease-in-out;
+
   &::before {
     position: absolute;
     background: #fff;
@@ -333,6 +335,8 @@ $pill-height: 13px;
     transform: translateX(#{$pill-width - $pill-height});
   }
 }
+
+
 
 // Democratic
 .state__toggle-checkbox:checked ~ .state__toggle-pill {

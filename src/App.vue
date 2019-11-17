@@ -18,13 +18,13 @@
         <span :style="`width: ${demBarWidth}`" class="header__bar-progress header__bar-progress--dem" />
         <span :style="`width: ${repBarWidth}`" class="header__bar-progress header__bar-progress--rep" />
       </div>
-
+      <!--
       <div class="header__share-bar">
         <button class="button button--share button--pill">
           Share this outcome
         </button>
       </div>
-
+      -->
 
       <section class="header__buttons">
         <button
@@ -61,7 +61,7 @@
             >
             <div class="state__toggle-pill" />
           </div>
-
+          <!--
           <ul v-if="state.articles" class="state__articles">
             <h4 v-if="state.articles" class="state__articles-header">
               NewsHour Coverage
@@ -74,6 +74,7 @@
               <a class="state__link" href="#">{{ article }}</a>
             </li>
           </ul>
+          -->
         </li>
       </ul>
 
